@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --prime-color: #fe9711;
+  --border-color: #ddd;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+  }
+}
+
+.container {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.section-btn {
+  background: var(--border-color);
+  transition: color 0.3s linear;
+  transition: background 0.3s linear;
+}
+.section-btn:hover {
+  background: var(--prime-color);
+  color: white;
+}
+input {
+  background-color: #f0f0f0;
+}
+input:focus {
+  border: 1px solid #f0f0f0;
+  background-color: white;
+  outline: none;
+}
+.link {
+  font-size: 12px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.link:hover {
+  color: var(--prime-color);
+}
+nav .w-px {
+  background-color: #ddd;
+}
+nav .border-y {
+  border-color: var(--border-color);
+}
+.tooltip .border {
+  border-color: var(--border-color);
+}
+.tooltip .w-px {
+  background-color: var(--border-color);
+}
+nav .active {
+  background-color: var(--prime-color);
+}
+.nested-nav {
+  grid-template-columns: repeat(5, 1fr);
+  top: 90%;
+  background-color: white;
+}
+
+.search {
+  color: #333;
+  background-color: #efefef;
+  border: 1px solid #efefef;
+}
+.search input {
+  background-color: #efefef;
+}
+.quick {
+  left: 50%;
+  background-color: rgba(0, 0, 0, 0.3);
+  transform: translate(-50%, -100px);
+  transition: transform 0.2s ease;
+}
+.card img {
+  scale: 1;
+  height: 100%;
+  object-fit: cover;
+
+  transition: transform 0.2s ease;
+}
+.card:hover img {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.2);
+}
+.card:hover .sw {
+  opacity: 0.5;
+}
+.card-wrapper:hover .wishlist {
+  transform: translate(0, 0);
+  transition: transform 0.2s linear;
+}
+.card-wrapper:hover .stats {
+  transform: translate(0, 0);
+  transition: transform 0.2s linear;
+}
+.wishlist {
+  transform: translateX(-200px);
+}
+.stats {
+  transform: translateX(200px);
+}
+.cart {
+  border: 2px solid var(--border-color);
+  color: black;
+  transition: color 0.3s linear;
+  transition: background 0.3s linear;
+}
+.cart:hover {
+  color: white;
+  background-color: var(--prime-color);
+}
+.cart-brand {
+  border: 2px solid var(--border-color);
+  color: white;
+  background-color: var(--prime-color);
+  font-weight: bold;
+  transition: color 0.3s linear;
+  transition: background 0.3s linear;
+}
+.cart-brand:hover {
+  background-color: black;
+}
+.sw {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #efefef;
+}
+.card:hover .quick {
+  transform: translate(-50%, -50%);
+  top: 50%;
+}
+.quick:hover {
+  background-color: var(--prime-color);
+}
+.css-3k766p {
+  max-width: 650px !important;
+}
+.hamburger {
+  display: flex;
+  padding: 12px 40px;
+  
+}
+@media screen and (max-width: 500px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+@media screen and (max-width: 750px) {
+  .hamburger {
+    display: none;
+   
+  }
+  .enable {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+  }
+  .disable {
+    display: none;
+  }
+}
