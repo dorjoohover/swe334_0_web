@@ -7,8 +7,27 @@ import Section from "@/components/Slider";
 
 import { Global } from "@/global/assets";
 import Slider from "react-slick";
-
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { api } from "@/global/values";
 export default function Home() {
+  const [data, setData] = useState([]);
+
+  const getData = async (id) => {
+    try {
+      await axios
+        .get(`${api}product`)
+
+        .then((d) => {
+          setData(d.data.splice(0, 4));
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   const settings = {
     dots: true,
     infinite: true,
@@ -119,10 +138,18 @@ export default function Home() {
         title={"Bestsellers"}
         child={
           <div className="grid grid-cols-4 gap-10">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {data?.map((d, i) => {
+          
+              return (
+                <Card
+                  key={i}
+                  id={d._id}
+                  img={d.thumbnail}
+                  price={d.price}
+                  title={d.title}
+                />
+              );
+            })}
           </div>
         }
       />

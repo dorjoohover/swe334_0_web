@@ -43,17 +43,17 @@ function CartState({ children }) {
     } catch (error) {}
   };
   const handleWish = (value) => {
-    let items = wish;
-    if (!wish.includes(value)) {
-      items.push(value);
-      setWish((prev) => [...prev, value]);
+    let items = [];
+    if (wish == undefined || !wish?.includes(value)) {
+      items = wish ? [...wish, value] : [value];
+      setWish(wish ? (prev) => [...prev, value] : [value]);
       toast({
         title: "Хүслээс нэмлээ",
         status: "success",
         duration: 3000,
       });
     } else {
-      let item = wish.filter((c) => c != value);
+      let item = wish?.filter((c) => c != value);
       items = item;
       setWish(item);
       toast({
@@ -67,10 +67,10 @@ function CartState({ children }) {
   const handleCart = (value, quantity) => {
     let items = [];
 
-    if (!cart.find((c) => c.id == value)) {
+    if (cart == undefined || !cart.find((c) => c.id == value)) {
       let item = { id: value, quantity: quantity };
-      items = [...cart, item];
-      setCart((prev) => [...prev, item]);
+      items = cart ? [...cart, item] : [item];
+      setCart(cart ? (prev) => [...prev, item] : [item]);
     } else {
       let i = cart.findIndex((c) => c.id == value);
 
